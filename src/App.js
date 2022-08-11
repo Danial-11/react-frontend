@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Routes, Route } from 'react-router-dom'
+import Stories from './components/stories/Stories'
+import Story from './components/story/Story'
+import Followers from './components/followers/Followers'
+import Navbar from './components/navbar/Navbar'
 
-function App() {
+function App () {
+  const ways = {
+    stories: '/',
+    story: '/story/:id',
+    followers: '/followers'
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar />
+      <Routes>
+        <Route path={ways.stories} element={<Stories />} />
+        <Route path={ways.story} element={<Story />} />
+        <Route path ={ways.followers} element={<Followers /> } />
+      </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
